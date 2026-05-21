@@ -24,7 +24,7 @@ export const socialLinks = [
   },
   {
     name: "Email",
-    url: "[EMAIL_ADDRESS]",
+    url: "mailto:senitha817s@gmail.com",
     icon: FaEnvelope,
     color: "#ea4335",
     hoverColor: "hover:text-[#ea4335]"
