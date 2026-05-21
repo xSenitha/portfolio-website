@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: var(--color-bg-val);
+  --color-card: var(--color-card-val);
+  --color-cardBorder: var(--color-card-border-val);
+  --color-text: var(--color-text-val);
+  --color-muted: var(--color-text-muted-val);
+  --color-accent: var(--color-accent-val);
+  
+  --font-sans: "Inter", sans-serif;
+  
+  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@layer base {
+  :root {
+    --color-bg-val: #f8fafc;
+    --color-card-val: rgba(255, 255, 255, 0.6);
+    --color-card-border-val: rgba(15, 23, 42, 0.06);
+    --color-text-val: #0f172a;
+    --color-text-muted-val: #64748b;
+    --color-accent-val: #3b82f6;
+  }
+
+  .dark {
+    --color-bg-val: #0f172a;
+    --color-card-val: rgba(255, 255, 255, 0.03);
+    --color-card-border-val: rgba(255, 255, 255, 0.05);
+    --color-text-val: #f8fafc;
+    --color-text-muted-val: #94a3b8;
+    --color-accent-val: #3b82f6;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-bg text-text font-sans antialiased overflow-x-hidden;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+}
+
+/* Selection Highlight */
+::selection {
+  background-color: rgba(59, 130, 246, 0.3);
+  color: #f8fafc;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg-val);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.2);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-val);
+}
+
+/* Glassmorphism Cards */
+.glass-card {
+  background: var(--color-card-val);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--color-card-border-val);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.04);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark .glass-card {
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25);
+}
+
+.glass-card-hover:hover {
+  border-color: rgba(59, 130, 246, 0.3);
+  box-shadow: 0 10px 40px 0 rgba(59, 130, 246, 0.12);
+  transform: translateY(-4px);
+}
+
+/* Ambient glow effects */
+.glow-accent {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.10;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.dark .glow-accent {
+  opacity: 0.16;
+}
